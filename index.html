@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<!-- OG Tags para preview bonito no WhatsApp -->
 <meta property="og:title" content="Nike Air Force 1 Premium 🔥">
 <meta property="og:description" content="Best Seller • $111 • Toque para ver">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600">
@@ -13,54 +12,73 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f5f0;
-    --accent: #e8ff00;
-    --gray: #888;
-    --card-bg: #ffffff;
-  }
-
   body {
-    background: var(--black);
+    background: rgba(0, 0, 0, 0.55);
     min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'DM Sans', sans-serif;
-    padding: 16px;
-    overflow-x: hidden;
+    padding: 20px;
+    /* Simula o fundo escurecido do WhatsApp atrás */
+    backdrop-filter: blur(2px);
   }
 
-  /* Background texture */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse 80% 60% at 20% 0%, #1a1a1a 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 80% 100%, #111 0%, transparent 60%);
-    pointer-events: none;
+  /* Botão fechar no topo */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px 10px;
+    background: #f5f5f0;
+    border-radius: 24px 24px 0 0;
   }
 
+  .btn-back {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #e8e8e3;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+  }
+
+  .btn-close {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #e8e8e3;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+  }
+
+  /* CARD — tamanho reduzido, igual à imagem de referência */
   .card {
-    background: var(--white);
-    border-radius: 28px;
     width: 100%;
-    max-width: 380px;
+    max-width: 320px;       /* ← menor que antes */
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
-    animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    position: relative;
-    z-index: 1;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+    animation: popIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    background: #f5f5f0;
   }
 
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.88) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
   }
 
-  /* IMAGE CAROUSEL */
+  /* CAROUSEL */
   .carousel {
     position: relative;
     width: 100%;
@@ -73,14 +91,13 @@
     display: flex;
     width: 400%;
     height: 100%;
-    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .slide {
     width: 25%;
     height: 100%;
     flex-shrink: 0;
-    position: relative;
   }
 
   .slide img {
@@ -91,273 +108,205 @@
 
   .badge {
     position: absolute;
-    top: 16px;
-    left: 16px;
-    background: var(--accent);
-    color: var(--black);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 1px;
+    top: 12px;
+    left: 12px;
+    background: #fff;
+    color: #111;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
     padding: 4px 10px;
     border-radius: 20px;
     z-index: 2;
+    letter-spacing: 0.3px;
   }
 
   .logo-badge {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 44px;
-    height: 44px;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
     background: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    font-size: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
   }
 
   .dots {
     position: absolute;
-    bottom: 14px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 6px;
+    gap: 5px;
     z-index: 2;
   }
 
   .dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 3px;
     background: rgba(255,255,255,0.4);
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     cursor: pointer;
   }
-  .dot.active {
-    width: 20px;
-    background: white;
-  }
+  .dot.active { width: 16px; background: white; }
 
   .nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
-    background: rgba(0,0,0,0.4);
+    width: 30px;
+    height: 30px;
+    background: rgba(0,0,0,0.35);
     border: none;
     border-radius: 50%;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     z-index: 3;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(6px);
-    transition: background 0.2s;
+    backdrop-filter: blur(4px);
   }
-  .nav-btn:active { background: rgba(0,0,0,0.7); }
-  .nav-btn.prev { left: 10px; }
-  .nav-btn.next { right: 10px; }
+  .nav-btn.prev { left: 8px; }
+  .nav-btn.next { right: 8px; }
 
   /* CONTENT */
   .content {
-    padding: 20px 20px 24px;
+    padding: 16px 16px 18px;
     background: white;
   }
 
   .product-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 1px;
-    color: var(--black);
-    line-height: 1;
-    margin-bottom: 4px;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    color: #0a0a0a;
+    margin-bottom: 2px;
   }
 
   .tagline {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    color: var(--gray);
+    color: #999;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
   }
 
   .description {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.5;
-    margin-bottom: 18px;
-  }
-
-  /* SIZE SELECTOR */
-  .size-label {
     font-size: 12px;
-    font-weight: 600;
-    color: var(--gray);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 14px;
   }
 
-  .sizes {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-
-  .size-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    border: 1.5px solid #e0e0e0;
-    background: white;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: var(--black);
-  }
-
-  .size-btn:active, .size-btn.selected {
-    background: var(--black);
-    color: white;
-    border-color: var(--black);
-    transform: scale(0.96);
-  }
-
-  /* PRICE + BUY */
   .bottom-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
   }
 
   .price-tag {
     background: #f0f0eb;
     border-radius: 50px;
-    padding: 12px 20px;
+    padding: 10px 16px;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 1px;
-    color: var(--black);
+    font-size: 22px;
+    color: #0a0a0a;
     flex-shrink: 0;
   }
 
   .buy-btn {
     flex: 1;
-    background: var(--black);
-    color: var(--accent);
+    background: #0a0a0a;
+    color: #e8ff00;
     border: none;
     border-radius: 50px;
-    padding: 15px 20px;
+    padding: 12px 16px;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 1.5px;
+    font-size: 17px;
+    letter-spacing: 1px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
   }
 
-  .buy-btn:active {
-    transform: scale(0.97);
-    background: #222;
-  }
+  .buy-btn:active { transform: scale(0.97); }
 
-  .buy-btn .icon {
-    width: 22px;
-    height: 22px;
-    background: var(--accent);
+  .buy-icon {
+    width: 18px;
+    height: 18px;
+    background: #e8ff00;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--black);
-    font-size: 13px;
+    color: #0a0a0a;
+    font-size: 11px;
   }
 
   /* TOAST */
   .toast {
     position: fixed;
-    bottom: 24px;
+    bottom: 20px;
     left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--black);
-    color: var(--accent);
+    transform: translateX(-50%) translateY(80px);
+    background: #0a0a0a;
+    color: #e8ff00;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 1px;
-    padding: 14px 28px;
+    padding: 12px 24px;
     border-radius: 50px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 100;
     white-space: nowrap;
   }
-
-  .toast.show {
-    transform: translateX(-50%) translateY(0);
-  }
-
-  /* WA FOOTER */
-  .wa-footer {
-    background: #f0f0eb;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: #666;
-    font-weight: 500;
-  }
-
-  .wa-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #25D366;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
 
 <div class="card">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <button class="btn-back" onclick="history.back()">←</button>
+    <button class="btn-close" onclick="window.close()">✕</button>
+  </div>
+
   <!-- CAROUSEL -->
   <div class="carousel">
     <div class="slides" id="slides">
-      <div class="slide">
-        <span class="badge">⭐ BEST SELLER</span>
-        <div class="logo-badge">✔️</div>
+      <div class="slide" style="position:relative">
+        <span class="badge">Best Seller</span>
+        <div class="logo-badge">NIKE</div>
         <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Nike AF1">
       </div>
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600&q=80" alt="Nike AF1 side">
+        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600&q=80" alt="Nike AF1">
       </div>
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80" alt="Nike AF1 back">
+        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80" alt="Nike AF1">
       </div>
-      <div class="slide">
-        <span class="badge">🔥 -20% HOJE</span>
-        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80" alt="Nike AF1 detail">
+      <div class="slide" style="position:relative">
+        <span class="badge">🔥 -20% hoje</span>
+        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80" alt="Nike AF1">
       </div>
     </div>
 
@@ -374,32 +323,17 @@
 
   <!-- CONTENT -->
   <div class="content">
-    <div class="product-name">Nike Airforce 1 Premium</div>
+    <div class="product-name">Nike Airforce1 Premium</div>
     <div class="tagline">Own the Airforce</div>
-    <div class="description">Step back into classic hoops style with durable leather and iconic Air cushioning.</div>
-
-    <div class="size-label">Escolha o tamanho (BR)</div>
-    <div class="sizes">
-      <button class="size-btn" onclick="selectSize(this)">38</button>
-      <button class="size-btn" onclick="selectSize(this)">39</button>
-      <button class="size-btn selected" onclick="selectSize(this)">40</button>
-      <button class="size-btn" onclick="selectSize(this)">41</button>
-      <button class="size-btn" onclick="selectSize(this)">42</button>
-      <button class="size-btn" onclick="selectSize(this)">43</button>
-    </div>
+    <div class="description">Step back into classic hoops style with a durable leather.</div>
 
     <div class="bottom-row">
       <div class="price-tag">$111</div>
       <button class="buy-btn" onclick="buyNow()">
-        COMPRAR AGORA
-        <div class="icon">↗</div>
+        Buy Now
+        <div class="buy-icon">↗</div>
       </button>
     </div>
-  </div>
-
-  <div class="wa-footer">
-    <div class="wa-dot"></div>
-    Loja oficial • Resposta em minutos
   </div>
 </div>
 
@@ -410,7 +344,6 @@
   const total = 4;
   const slidesEl = document.getElementById('slides');
   const dots = document.querySelectorAll('.dot');
-  let selectedSize = '40';
 
   function updateCarousel() {
     slidesEl.style.transform = `translateX(-${current * 25}%)`;
@@ -422,12 +355,8 @@
     updateCarousel();
   }
 
-  function goTo(i) {
-    current = i;
-    updateCarousel();
-  }
+  function goTo(i) { current = i; updateCarousel(); }
 
-  // Swipe
   let startX = 0;
   slidesEl.parentElement.addEventListener('touchstart', e => startX = e.touches[0].clientX);
   slidesEl.parentElement.addEventListener('touchend', e => {
@@ -435,23 +364,14 @@
     if (Math.abs(diff) > 40) slide(diff > 0 ? 1 : -1);
   });
 
-  function selectSize(btn) {
-    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    selectedSize = btn.textContent;
-  }
-
   function buyNow() {
-    const msg = encodeURIComponent(`Olá! Quero comprar:\n👟 *Nike Air Force 1 Premium*\n📏 Tamanho: ${selectedSize}\n💰 $111\n\nPode confirmar disponibilidade?`);
+    const msg = encodeURIComponent(`Olá! Quero comprar:\n👟 *Nike Air Force 1 Premium*\n💰 $111\n\nPode confirmar disponibilidade?`);
     const toast = document.getElementById('toast');
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 3000);
-    setTimeout(() => {
-      window.open(`https://wa.me/?text=${msg}`, '_blank');
-    }, 500);
+    setTimeout(() => window.open(`https://wa.me/?text=${msg}`, '_blank'), 500);
   }
 
-  // Auto-advance
   setInterval(() => slide(1), 4000);
 </script>
 </body>
